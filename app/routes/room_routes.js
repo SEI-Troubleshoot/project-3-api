@@ -22,4 +22,11 @@ router.post('/chatRoom', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+router.get('/chatRoom', requireToken, (req, res, next) => {
+  Room.find()
+    .populate('chats')
+    .then(handle404)
+    .then(data => res.status(200).json({ data }))
+    .catch(next)
+})
 module.exports = router
