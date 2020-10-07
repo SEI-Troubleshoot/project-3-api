@@ -7,6 +7,7 @@ This application is the back end API for the chat room application.
 <a href="">Deployed client</a>
 <a href="">Deployed API</a>
 <a href="https://github.com/SEI-Troubleshoot/project-3-client">Client repository</a>
+<a href="https://github.com/SEI-Troubleshoot">Project Repository</a>
 
 
 ## Planning Story
@@ -32,3 +33,4 @@ This application is the back end API for the chat room application.
 ---
 
 #### ERD(entity relationship diagram):
+<img src="https://imgur.com/w7Y8tBI">
