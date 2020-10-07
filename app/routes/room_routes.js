@@ -5,7 +5,7 @@ const Room = require('./../models/room.js')
 
 const customErrors = require('../../lib/custom_errors')
 const handle404 = customErrors.handle404
-// const requireOwnership = customErrors.requireOwnership
+const requireOwnership = customErrors.requireOwnership
 // const removeBlanks = require('../../lib/remove_blank_fields')
 const requireToken = passport.authenticate('bearer', { session: false })
 
@@ -27,6 +27,17 @@ router.get('/chatRoom', requireToken, (req, res, next) => {
     .populate('chats')
     .then(handle404)
     .then(data => res.status(200).json({ data }))
+    .catch(next)
+})
+
+router.delete('/chatRoom/:id', requireToken, (req, res, next) => {
+  Room.findById(req.params.id)
+    .then(handle404)
+    .then(room => {
+      requireOwnership(req, room)
+      room.deleteOne()
+    })
+    .then(() => res.sendStatus(204))
     .catch(next)
 })
 module.exports = router
