@@ -5,11 +5,15 @@ const chatSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  owner: {
+  ownerId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
+    required: true
+  },
+  email: {
+    type: String,
     required: true
   }
 })
 
-module.exports = chatSchema
+module.exports = mongoose.model('Chat', chatSchema)
