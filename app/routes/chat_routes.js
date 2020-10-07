@@ -10,11 +10,10 @@ const removeBlanks = require('../../lib/remove_blank_fields')
 const requireToken = passport.authenticate('bearer', { session: false })
 
 const router = express.Router()
-
+// create chatmessages//
 router.post('/chatmsg', requireToken, (req, res, next) => {
   req.body.chat.ownerId = req.user.id
   req.body.chat.email = req.user.email
-  console.log(req.user, req.body.chat)
   Chat.create(req.body.chat)
     .then(handle404)
     .then(data => {
