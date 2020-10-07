@@ -29,4 +29,17 @@ router.get('/chatRoom', requireToken, (req, res, next) => {
     .then(data => res.status(200).json({ data }))
     .catch(next)
 })
+
+// router.delete('/chatRoom/:id', requireToken, (req, res, next) => {
+//   Room.findById(req.params.id)
+//     .then(handle404)
+//     .then(room => {
+//       // requireOwnership(req, room)
+//       if (room.admin === req.user.id){
+//       room.deleteOne()
+//     } else {res.sendStatus(400)}
+//     })
+//     .then(() => res.sendStatus(204))
+//     .catch(next)
+// })
 module.exports = router
