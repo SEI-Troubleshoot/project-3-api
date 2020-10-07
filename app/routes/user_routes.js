@@ -138,4 +138,26 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+router.get('/users', requireToken, (req, res, next) => {
+  User.find()
+    .then(data => {
+      let userData = []
+      const logIn = function (val) {
+        if (val.token.length === 32) {
+          return true
+        } else {
+          return false
+        }
+      }
+      data.forEach(val => {
+        userData.push(
+          { email: val.email,
+            signIn: logIn(val)
+          })
+      })
+      res.status(200).json(userData)
+    })
+    .catch(next)
+})
+
 module.exports = router
