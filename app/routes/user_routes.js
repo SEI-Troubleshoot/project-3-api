@@ -142,6 +142,7 @@ router.get('/users', requireToken, (req, res, next) => {
   User.find()
     .then(data => {
       let userData = []
+      // function to check if which user is logged in; Number of characters in a token is 32.
       const logIn = function (val) {
         if (val.token.length === 32) {
           return true
@@ -149,6 +150,7 @@ router.get('/users', requireToken, (req, res, next) => {
           return false
         }
       }
+      // for each user return just email and if signed in or not
       data.forEach(val => {
         userData.push(
           { email: val.email,
