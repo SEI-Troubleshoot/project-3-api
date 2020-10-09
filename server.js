@@ -47,8 +47,11 @@ const server = require('http').createServer(app)
 const io = require('socket.io')(server)
 
 io.on('connection', socket => {
-  socket.on('chat', ({ content, email }) => {
-    io.emit('chat', { content, email })
+  socket.on('chat', ({ content, email, ownerId, _id }) => {
+    io.emit('chat', { content, email, ownerId, _id })
+  })
+  socket.on('end', function () {
+    socket.disconnect(0)
   })
 })
 

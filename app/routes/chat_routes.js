@@ -23,6 +23,7 @@ router.post('/chatmsg', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+// show all chats
 router.get('/chatmsg', requireToken, (req, res, next) => {
   Chat.find()
     .then(handle404)
@@ -31,6 +32,8 @@ router.get('/chatmsg', requireToken, (req, res, next) => {
     })
     .catch(next)
 })
+
+// delete chats
 router.delete('/chatmsg/:id', requireToken, (req, res, next) => {
   Chat.findById(req.params.id)
     .then(handle404)
@@ -41,6 +44,8 @@ router.delete('/chatmsg/:id', requireToken, (req, res, next) => {
     .then(() => res.sendStatus(204))
     .catch(next)
 })
+
+// edit chats
 router.patch('/chatmsg/:id', requireToken, removeBlanks, (req, res, next) => {
   // if the client attempts to change the `owner` property by including a new
   // owner, prevent that by deleting that key/value pair
