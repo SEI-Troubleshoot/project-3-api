@@ -4,8 +4,8 @@
 This application is the back end API for the chat room application.
 
 ## Important Links
-<a href="">Deployed client</a><br>
-<a href="">Deployed API</a><br>
+<a href="https://sei-troubleshoot.github.io/project-3-client/">Deployed client</a><br>
+<a href="https://thawing-meadow-19567.herokuapp.com/">Deployed API</a><br>
 <a href="https://github.com/SEI-Troubleshoot/project-3-client">Client repository</a><br>
 <a href="https://github.com/SEI-Troubleshoot">Project Repository</a>
 
