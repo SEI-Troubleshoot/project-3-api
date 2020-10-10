@@ -6,6 +6,7 @@ const cors = require('cors')
 // require route files
 const exampleRoutes = require('./app/routes/example_routes')
 const userRoutes = require('./app/routes/user_routes')
+const chatRoutes = require('./app/routes/chat_routes')
 
 // require middleware
 const errorHandler = require('./lib/error_handler')
@@ -42,6 +43,18 @@ app.use(cors({ origin: process.env.CLIENT_ORIGIN || `http://localhost:${clientDe
 // define port for API to run on
 const port = process.env.PORT || serverDevPort
 
+const server = require('http').createServer(app)
+const io = require('socket.io')(server)
+
+io.on('connection', socket => {
+  socket.on('chat', ({ content, email, ownerId, _id }) => {
+    io.emit('chat', { content, email, ownerId, _id })
+  })
+  socket.on('end', function () {
+    socket.disconnect(0)
+  })
+})
+
 // this middleware makes it so the client can use the Rails convention
 // of `Authorization: Token token=<token>` OR the Express convention of
 // `Authorization: Bearer <token>`
@@ -63,6 +76,7 @@ app.use(requestLogger)
 // register route files
 app.use(exampleRoutes)
 app.use(userRoutes)
+app.use(chatRoutes)
 
 // register error handling middleware
 // note that this comes after the route middlewares, because it needs to be
@@ -70,7 +84,7 @@ app.use(userRoutes)
 app.use(errorHandler)
 
 // run API on designated port (4741 in this case)
-app.listen(port, () => {
+server.listen(port, () => {
   console.log('listening on port ' + port)
 })
 
