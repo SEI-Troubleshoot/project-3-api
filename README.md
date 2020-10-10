@@ -4,14 +4,14 @@
 This application is the back end API for the chat room application.
 
 ## Important Links
-<a href="">Deployed client</a>
-<a href="">Deployed API</a>
-<a href="https://github.com/SEI-Troubleshoot/project-3-client">Client repository</a>
+<a href="https://sei-troubleshoot.github.io/project-3-client/">Deployed client</a><br>
+<a href="https://thawing-meadow-19567.herokuapp.com/">Deployed API</a><br>
+<a href="https://github.com/SEI-Troubleshoot/project-3-client">Client repository</a><br>
 <a href="https://github.com/SEI-Troubleshoot">Project Repository</a>
 
 
 ## Planning Story
-
+After our planning period we split up the setup of the front end client and back end api into pairs.  When the templates were ready, we set up the models and READMEs, then tested each CRUD with curl scripts.
 
 ### User Stories
 
@@ -26,11 +26,12 @@ This application is the back end API for the chat room application.
 
 ### Unsolved Problems
 
-- No unsolved problems at the moment.
+- In later version, create model for group chats
+- In later version, create model for direct messaging
 
 ## Images
 
 ---
 
 #### ERD(entity relationship diagram):
-<img src="https://imgur.com/w7Y8tBI">
+<img src="https://imgur.com/w7Y8tBI.png">
