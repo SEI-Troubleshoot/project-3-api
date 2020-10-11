@@ -50,8 +50,14 @@ io.on('connection', socket => {
   socket.on('chat', ({ content, email, ownerId, _id }) => {
     io.emit('chat', { content, email, ownerId, _id })
   })
-  socket.on('end', function () {
-    socket.disconnect(0)
+  socket.on('edit', ({ content, email, ownerId, _id }) => {
+    io.emit('edit', { content, email, ownerId, _id })
+  })
+  socket.on('del', ({ msgId }) => {
+    io.emit('del', { msgId })
+  })
+  socket.on('user', () => {
+    io.emit('user')
   })
 })
 
